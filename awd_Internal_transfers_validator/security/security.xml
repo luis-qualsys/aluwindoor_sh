@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record model="ir.module.category" id="module_category_transfers_validator">
+        <field name="name">Aluwindoor</field>
+        <field name="description">Ayuda a administrar el permiso de aprobación de transferencias internas</field>
+        <field name="sequence">20</field>
+    </record>
+
+    <record id="group_aluwindoor" model="res.groups">
+        <field name="name">Validador de transferencias</field>
+        <field name="comment">Grupo de permisos para aprobación de transferencias.</field>
+        <field name="category_id" ref="module_category_transfers_validator"/>
+        <!-- <field name="implied_ids" evals="[(4, ref('group_aludiwn'))]"/> -->
+    </record>
+</odoo>

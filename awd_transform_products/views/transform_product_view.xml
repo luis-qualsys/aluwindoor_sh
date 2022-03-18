@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="adw_stock_transformation_form" model="ir.ui.view">
+        <field name="name">adw.stock.transformation.form</field>
+        <field name="model">stock.transform</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <!-- <button name="action_stock_transformation_adjustment" type="object" string="Realizar transformación"/> -->
+                    <button name="stock_transforming" type="object" string="Realizar transformación" class="oe_highlight" />
+                    <field name="state" widget="statusbar" />
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="awd_product" />
+                            <field name="awd_location_origin" />
+                            <field name="awd_transform_qty" />
+                        </group>
+                        <group>
+                            <field name="awd_product_result" />
+                            <field name="awd_location_destination"/>
+                            <field name="awd_transformed_qty" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="adw_stock_transformation_tree" model="ir.ui.view">
+        <field name="name">adw.stock.transformation.tree</field>
+        <field name="model">stock.transform</field>
+         <!-- <field name="domain">[('company_id', '=', user.company_id.id)]</field> -->
+        <field name="arch" type="xml">
+        <tree >
+            <field name="name"/>
+            <field name="awd_product" />
+            <field name="awd_location_origin" />
+            <field name="awd_transform_qty" />
+            <field name="awd_product_result" />
+            <field name="awd_location_destination" />
+            <field name="awd_transformed_qty" />
+            <field name="awd_apply_date" />
+            <field name="state" />
+            <field name="company_id" />
+        </tree>
+        <!-- <xpath expr="//tree" position="attributes">
+                <attribute name="domain">[('company_id', '=', 2)]</attribute>
+        </xpath> -->
+        </field>
+    </record>
+
+
+    <record id="adw_stock_action" model="ir.actions.act_window">
+        <field name="name">Transformaciones de productos</field>
+        <field name="res_model">stock.transform</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="adw_stock_transformation_tree"/>
+        <!-- <field name="domain">[('company_id', '=', 1)]</field> -->
+    </record>
+
+<record id="normal_user_rule" model="ir.rule">
+    <field name="name">Normal User can see its own records</field>
+    <field name="model_id" ref="model_stock_transform"/>
+    <field name="domain_force">[('company_id', '=', company_id)]</field>
+    <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+    <!-- <field name='perm_create' eval='True'/>
+    <field name='perm_read' eval='True'/>
+    <field name='perm_unlink' eval='True'/>
+    <field name='perm_write' eval='True'/> -->
+</record>
+
+    <menuitem 
+        id="awd_stock_menuitem" 
+        name="Transformaciones de productos" 
+        parent="stock.menu_stock_warehouse_mgmt" 
+        action="adw_stock_action"/>
+</odoo>

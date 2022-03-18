@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- model.name inherit tree view -->
+    <record id="stock_move_line_inherit_view_form" model="ir.ui.view">
+        <field name="name">stock.move.line.inherit.view.form</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock.view_move_line_form"/>
+        <field name="arch" type="xml">
+            <!-- Add your xpath here -->
+            <xpath expr="//field[@name='owner_id']" position="after">
+                <field name="awd_transformation"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="stock_move_line_inherit_view_tree" model="ir.ui.view">
+        <field name="name">stock.move.line.inherit.view.tree</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock.view_move_line_tree"/>
+        <field name="arch" type="xml">
+            <!-- Add your xpath here -->
+            <xpath expr="//field[@name='state']" position="after">
+                <field name="awd_transformation"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

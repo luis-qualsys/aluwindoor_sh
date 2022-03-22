@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+	<template id="sale_report_inherit" inherit_id="sale.report_saleorder_document" name="Sale Report Inherit">
+		<xpath expr="//t[@t-set='address']" position="inside">
+			<p>
+				Categoria:
+				<span t-field="doc.partner_id.awd_category" t-field-options='{"widget": "priority"}' />
+			</p>
+		</xpath>
+
+		<xpath expr="//span[@t-field='doc.payment_term_id.note']" position="after">
+			<div style="max-height:600px; max-width: 1000px; align: right;">
+				<div class="float-left" style=" border-style:solid; text-align:justify; width:550px; font-size:12px;">
+					<strong>Entrega de Almacen:</strong>
+					<br>   </br>    <br>   </br>
+					<hr/>
+					<p style="text-align:center;">Firma de enterado</p>
+
+				</div>
+				<div class="float-left" style=" border-style:solid; text-align:justify; width:550px; font-size:12px;">
+					<strong>Entrega de Herrajes:</strong>
+					<br>   </br>    <br>   </br>
+					<hr/>
+					<p style="text-align:center;">Firma de enterado</p>
+				</div>
+			</div>
+		</xpath>
+	</template>
+</odoo>

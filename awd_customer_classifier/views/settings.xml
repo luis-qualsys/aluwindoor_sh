@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="res_config_settings_view_form_customer" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.customer</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base_setup.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]//div[hasclass('app_settings_block')]//div[@name='contacts_setting_container']" position="after">
+                <div class="row mt16 o_settings_container" name="contacts_setting_container">
+                    <div class="col-xs-12 col-md-6 o_setting_box" id="awd_freq_client">
+                        <div class="o_setting_right_pane">
+                            <div class="o_form_label">
+                                Frecuencia de cálculo (días)
+                                <field name="awd_partner_freq_compute" />
+                            </div>
+                            <div class="text-muted">
+                                Frecuencia para la elaboración del cálculo de clientes
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 o_setting_box" id="awd_date_freq_init">
+                        <div class="o_setting_left_pane"></div>
+                        <div class="o_setting_right_pane">
+                            <label for="awd_partner_freq_date_init" />
+                            <div class="text-muted">
+                                Fecha inicial para cálculo automatico de cliente
+                            </div>
+                            <field name="awd_partner_freq_date_init" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt16 o_settings_container" name="contacts_setting_container">
+                    <div class="col-xs-12 col-md-6 o_setting_box" id="awd_freq_client">
+                        <div class="o_setting_right_pane">
+                            <div class="o_form_label">
+                                Cantidad mínima
+                                <field name="awd_sale_stat_min" widget="monetary" />
+                            </div>
+                            <div class="text-muted">
+                                Cantidad mínima de venta para asignación de criterio de clasificación 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 o_setting_box" id="awd_date_freq_init">
+                        <div class="o_setting_left_pane"></div>
+                        <div class="o_setting_right_pane">
+                            <div class="o_form_label">
+                                Numero de mínimo familias
+                                <field name="awd_families_stat" />
+                            </div>
+                            <div class="text-muted">
+                                Número de mínimo familias para asignación de criterio de clasificación
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt16 o_settings_container" name="contacts_setting_container">
+                    <div class="col-xs-12 col-md-6 o_setting_box" id="awd_freq_sales_client">
+                        <div class="o_setting_right_pane">
+                            <div class="o_form_label">
+                                Frecuencia mínima de venta
+                                <field name="awd_freq_sales" />(%%)
+                            </div>
+                            <div class="text-muted">
+                                Frecuencia mínima de venta para asignación de criterio de clasificación 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

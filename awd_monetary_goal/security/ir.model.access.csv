@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+awd_monetary_goal.access_awd_crm_team_goals,access_awd_crm_team_goals,awd_monetary_goal.model_awd_crm_team_goals,base.group_user,1,1,1,1
+awd_monetary_goal.access_awd_hr_employee_goal,access_awd_hr_employee_goal,awd_monetary_goal.model_awd_hr_employee_goal,base.group_user,1,1,1,1

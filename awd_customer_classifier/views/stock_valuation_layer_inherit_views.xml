@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <!-- stock.valuation.layer inherit tree view -->
+    <record id="stock_valuation_layer_inherit_tree_view" model="ir.ui.view">
+        <field name="name">stock.valuation.layer.inherit.view.tree</field>
+        <field name="model">stock.valuation.layer</field>
+        <field name="inherit_id" ref="stock_account.stock_valuation_layer_tree"/>
+        <field name="arch" type="xml">
+            <!-- Add your xpath here -->
+            <xpath expr="//tree//field[@name='product_id']" position="after">
+                <field name="awd_family_product"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- stock.valuation.layer inherit search view -->
+    <record id="stock_valuation_layer_inherit_search_view" model="ir.ui.view">
+        <field name="name">stock.valuation.layer.inherit.view.search</field>
+        <field name="model">stock.valuation.layer</field>
+        <field name="inherit_id" ref="stock_account.view_inventory_valuation_search"/>
+        <field name="arch" type="xml">
+            <!-- Add your xpath here -->
+            <xpath expr="//search" position="inside">
+                <field name="awd_family_product" string="Familia"/>
+            </xpath>
+            <xpath expr="//group" position="inside">
+                <filter domain="[('awd_family_product','!=','')]" name="Familias" string="Familias"/>
+                <separator/>
+            </xpath>
+            
+            <xpath expr="//group" position="inside">
+                <filter string="Familia" name="familygroup" context="{'group_by':'awd_family_product'}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- stock.picking inherit search view -->
+    <record id="stock_picking_inherit_view_search" model="ir.ui.view">
+        <field name="name">stock.picking.inherit.view.search</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_internal_search"/>
+        <field name="arch" type="xml">
+            <!-- Add your xpath here -->
+            <xpath expr="//filter[@name='my_transfers']" position="before">
+                <filter domain="[('awd_partner_cat','!=','')]" name="Clasificación de Cliente" string="Clasificación"/>
+                <field name="awd_partner_cat" string="Clasificación de Cliente"/>
+            </xpath>
+            
+            <xpath expr="//group" position="inside">
+                <filter string="Clasificación de Cliente" name="clasifier_client_awd" context="{'group_by': 'awd_partner_cat'}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

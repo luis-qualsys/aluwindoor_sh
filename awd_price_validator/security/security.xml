@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record model="ir.module.category" id="module_category_price_validator">
+        <field name="name">Aluwindoor</field>
+        <field name="description">Ayuda a administrar el permiso de aprobación de ventas</field>
+        <field name="sequence">20</field>
+    </record>
+
+    <record id="group_aluwindoor" model="res.groups">
+        <field name="name">Validador de ventas</field>
+        <field name="comment">Grupo de permiso de aprobación de ventas.</field>
+        <field name="category_id" ref="module_category_price_validator"/>
+        <!-- <field name="implied_ids" evals="[(4, ref('group_aludiwn'))]"/> -->
+    </record>
+
+    <record id="group_aluwindoor_admin" model="res.groups">
+        <field name="name">Administrador clientes</field>
+        <field name="comment">Grupo de permiso de la administración de clientes.</field>
+        <field name="category_id" ref="module_category_price_validator"/>
+        <!-- <field name="implied_ids" evals="[(4, ref('group_aludiwn'))]"/> -->
+    </record>
+</odoo>

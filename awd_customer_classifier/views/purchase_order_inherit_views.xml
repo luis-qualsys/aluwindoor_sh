@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <!-- purchase.order inherit search view -->
+    <record id="view_id" model="ir.ui.view">
+        <field name="name">purchase.order.inherit.view.search</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
+        <field name="arch" type="xml">
+            <!-- Add your xpath here -->
+            <xpath expr="//search//field[@name='origin']" position="after">
+                <field name="awd_partner_cat" string="Clasificación de Cliente"/>
+                <filter string="Clasificación de Clientes" name="categories_sales_awd" domain="[('awd_partner_cat','!=','')]"/>
+            </xpath>
+            <xpath expr="//search//group" position="inside">
+                <filter string="Clasificación de Clientes" name="partnerclasification" context="{'group_by':'awd_partner_cat'}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

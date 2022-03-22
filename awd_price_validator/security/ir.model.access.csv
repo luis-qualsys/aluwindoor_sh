@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+awd_price_validator.access_awd_product_family,access_awd_product_family,awd_price_validator.model_awd_product_family,base.group_user,1,1,1,1

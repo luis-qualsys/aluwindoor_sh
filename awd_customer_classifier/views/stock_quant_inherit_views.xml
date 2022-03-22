@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <!-- stock.quant inherit tree view -->
+    <record id="stock_quant_inherit_tree_view" model="ir.ui.view">
+        <field name="name">stock.quant.inherit.view.tree</field>
+        <field name="model">stock.quant</field>
+        <field name="inherit_id" ref="stock.view_stock_quant_tree_inventory_editable"/>
+        <field name="arch" type="xml">
+            <!-- Add your xpath here -->
+            <xpath expr="//tree//field[@name='product_id']" position="after">
+                <field name="awd_family_product"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- stock.quant inherit search view -->
+    <record id="stock_quant_inherit_search_view" model="ir.ui.view">
+        <field name="name">stock.quant.inherit.view.search</field>
+        <field name="model">stock.quant</field>
+        <field name="inherit_id" ref="stock.quant_search_view"/>
+        <field name="arch" type="xml">
+            <!-- Add your xpath here -->
+            <xpath expr="//search" position="inside">
+                <field name="awd_family_product" string="Familias"/>
+            </xpath>
+            <xpath expr="//group//filter[@name='internal_loc']" position="before">
+                <filter domain="[('awd_family_product','!=','')]" name="Familias" string="Familias"/>
+                <separator/>
+            </xpath>
+            <xpath expr="//group" position="inside">
+                <filter string="Familia" name="familygroup" context="{'group_by':'awd_family_product'}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

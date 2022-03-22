@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="wzd_customer_classifier_form" model="ir.ui.view">
+        <field name="name">wzd.customer.classifier.form</field>
+        <field name="model">wizard.res.partner.classifier.man</field>
+        <field name="arch" type="xml">
+            <form string="Clasificador de Clientes manual">
+                <sheet>
+                    <div class="text-muted">
+                        Seleccionar clientes, fecha de inicio y termino para cálculo manual
+                    </div>
+                    <group>
+                        <field name="date_init" />
+                        <field name="date_end" />
+                    </group>
+                    <group>
+                        <p>Colocar clientes a calcular, si se deja vácio lo cálcula para todos</p>
+                        <field name="res_partner_id" widget="many2many_tags" />
+                    </group>
+                    <footer>
+                        <button name="compute_customers_classifier" string="Calcular" type="object" class="btn-primary" />
+                        <button string="Cancel" special="cancel" class="oe_link" />
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="wzd_customer_classifier_action" model="ir.actions.act_window">
+        <field name="name">Clasificador manual de clientes</field>
+        <field name="res_model">wizard.res.partner.classifier.man</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="res_partner_manual_action" name="Cálculo Categorias" parent="contacts.res_partner_menu_config" action="wzd_customer_classifier_action" sequence="10" />
+
+</odoo>

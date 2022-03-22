@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <!-- sale.order inherit form view -->
+    <record id="sale_order_inherit_view_form2" model="ir.ui.view">
+        <field name="name">sale.order.inherit.view.form2</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <!-- Add your xpath here -->
+            <xpath expr="//sheet//group[@name='partner_details']//field[@name='partner_id']" position="before">
+                <field name="awd_partner_cat" string=" " widget="priority" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+    <!-- sale.order inherit tree view -->
+    <!-- <record id="sale_order_inherit_view" model="ir.ui.view">
+        <field name="name">sale.order.inherit.view.tree</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="awd_partner_cat" widget="priority"/>
+            </xpath>
+        </field>
+    </record> -->
+
+    <!-- sale.order inherit search view -->
+    <record id="sale_order_inherit_search_view" model="ir.ui.view">
+        <field name="name">sale.order.inherit.view.search</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='my_sale_orders_filter']" position="before">
+                <filter string="Clasificación" name="categories_sales_awd" domain="[('awd_partner_cat','!=','')]"/>
+                <field name="awd_partner_cat" string="Clasificación Cliente"/>
+            </xpath>
+            <xpath expr="//group" position="inside">
+                <filter name="group_classified_sales_awd" string="Clasificación" context="{'group_by': 'awd_partner_cat'}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

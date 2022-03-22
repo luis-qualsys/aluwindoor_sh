@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data noupdate="0">
+        <record model="ir.rule" id="res_partner_limited">
+            <field name="name">res_partner: read only partners from vendor</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <!-- <field name="domain_force">[('user_id','=',user.id)]</field> -->
+            <field name="domain_force">['|',('user_id','=',False),('user_id','!=',False)]</field>
+            <!-- <field name="domain_force">['|',('user_id','=',False),('user_id','!=',False)]</field> -->
+            <field name="groups" eval="[(4, ref('sales_team.group_sale_salesman'))]"/> 
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+            <field name="perm_create" eval="True"/>
+        </record>
+
+
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('module', '=', 'base'), ('name', '=', 'res_partner_rule_private_employee')]"/>
+            </function>
+            <value eval="{'noupdate': False}"/>
+        </function>
+        <record model="ir.rule" id="base.res_partner_rule_private_employee">
+            <field name="groups" eval="[(3, ref('base.group_user')),(4, ref('sales_team.group_sale_manager'))]"/> 
+        </record>
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('module', '=', 'base'), ('name', '=', 'res_partner_rule_private_employee')]"/>
+            </function>
+            <value eval="{'noupdate': True}"/>
+        </function>
+    </data>
+</odoo>

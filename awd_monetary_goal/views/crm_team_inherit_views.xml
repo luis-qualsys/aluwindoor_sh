@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <!-- crm.team inherit form view -->
+    <record id="crm_team_inherit_view_form" model="ir.ui.view">
+        <field name="name">crm.team.inherit.view.form</field>
+        <field name="model">crm.team</field>
+        <field name="inherit_id" ref="sales_team.crm_team_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='company_id']" position="after">
+                <label for="awd_monetary_goal" />
+                <div class="o_row">
+                    <field name="awd_monetary_goal" widget="monetary" options="{'currency_field': 'currency_id'}" />
+                    <span class="oe_read_only">/ Mes</span>
+                    </div><div class="o_row">
+                    <label for="awd_period_init" />
+                    <field name="awd_period_init" widget="date" options="{'currency_field': 'currency_id'}" />
+                    <label for="awd_period_end" />
+                    <field name="awd_period_end" widget="date" options="{'currency_field': 'currency_id'}" />
+                    </div><div class="o_row">
+                    <button name="dummy" type="object" string="Calcular metas"/>
+                    
+                </div>
+            </xpath>
+
+            <xpath expr="//page[@name='members_users']" position="after">
+                <page string="Metas historico" name="crm_goals_hist">
+                    <field name="awd_hist_goals_ids" string="Metas" widget='one2many'>
+                        <tree editable="bottom">
+                            <field name="name"/>
+                            <field name="sale_team_id"/>
+                            <field name="awd_period_init1" />
+                            <field name="awd_period_end1" />
+                            <field name="awd_goals" />
+                            <field name="awd_sales_qty" />
+                            <field name="state" />
+                            <field name="awd_process"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

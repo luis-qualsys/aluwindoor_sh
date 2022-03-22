@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+	<template id="stock_picking_report_inherit" inherit_id="stock.report_picking" name="Picking Picking Report Inherit">
+		<xpath expr="//div[@name='div_incoming_address']" position="inside">
+			<p>
+				Categoria:
+				<span t-field="o.partner_id.awd_category" t-field-options='{"widget": "priority"}' />
+			</p>
+		</xpath>
+	</template>
+
+    <template id="stock_delivery_report_inherit" inherit_id="stock.report_delivery_document" name="Picking Delivery Report Inherit">
+		<xpath expr="//div[@name='partner_header']" position="inside">
+			<p>
+				Categoria:
+				<span t-field="partner.awd_category" t-field-options='{"widget": "priority"}' />
+			</p>
+		</xpath>
+	</template>
+</odoo>

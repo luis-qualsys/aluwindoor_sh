@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <!-- wizard.crm.team.get.goals action window -->
+    <record id="wizard_crm_team_get_goals_form" model="ir.ui.view">
+        <field name="name">wizard.crm.team.get.goals.form</field>
+        <field name="model">wizard.crm.team.get.goals</field>
+        <field name="arch" type="xml">
+            <form string="Clasificador de Clientes manual">
+                <sheet>
+                    <div class="text-muted">
+                        Cálculo de metas manuales seleciona fecha de inicio y termino.
+                    </div>
+                    <group>
+                        <field name="awd_date_init" />
+                        <field name="awd_date_end" />
+                    </group>
+                    <group>
+                        <field name="crm_team_id" readonly="1"/>
+                    </group>
+                    <footer>
+                        <button name="get_goals_teams" string="Calcular" type="object" class="btn-primary" />
+                        <button string="Cancel" special="cancel" class="oe_link" />
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+
+    <!-- wizard.crm.team.get.goals action window -->
+    <record id="wizard_crm_team_get_goals" model="ir.actions.act_window">
+        <field name="name">Obtener la meta monetaria de Equipo</field>
+        <field name="res_model">wizard.crm.team.get.goals</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

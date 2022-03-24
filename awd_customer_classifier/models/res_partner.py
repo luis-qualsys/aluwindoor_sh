@@ -6,12 +6,26 @@ class ResPartner(models.Model):
     _inherit = 'res.partner'
 
     awd_calculate_results = fields.One2many(comodel_name='awd.res.partner.result', inverse_name='partner_id', string='Resultados de calculo')
-    awd_category = fields.Selection(string='Categoria', selection=[
+    awd_category_view = fields.Selection(string='Cat', selection=[
                                         ('0', 'Ninguno'),
                                         ('1', 'Bronce'),
                                         ('2', 'Plata'),
                                         ('3', 'Oro')
                                     ], default="0", compute='_get_categories')
+    awd_category = fields.Selection(string='Categoria', selection=[
+                                        ('0', 'Ninguno'),
+                                        ('1', 'Bronce'),
+                                        ('2', 'Plata'),
+                                        ('3', 'Oro')
+                                    ], default="0", compute='_get_category_view', store=True)
+
+    @api.onchange('awd_category_view')
+    def _get_category_view(self):
+        for record in self:
+            if record.awd_category_view:
+                record.awd_category = record.awd_category_view
+            else:
+                record.awd_category = '0'
 
     @api.depends('awd_calculate_results')
     def _get_categories(self):
@@ -19,12 +33,12 @@ class ResPartner(models.Model):
             result = self.env['awd.res.partner.result'].search([('partner_id.id', '=', record.id)])
             if len(result) > 0:
                 result = result[-1]
-                if result.awd_category:
-                    record.awd_category = result.awd_category
+                if result.awd_category_view:
+                    record.awd_category_view = result.awd_category
                 else:
-                    record.awd_category = '0'
+                    record.awd_category_view = '0'
             else:
-                record.awd_category = '0'
+                record.awd_category_view = '0'
 
     def compute_customer_classifier(self):
         users = self.env['res.partner'].search([])

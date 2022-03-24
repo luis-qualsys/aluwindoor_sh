@@ -7,11 +7,11 @@
         <field name="inherit_id" ref="base.view_partner_form" />
         <field name="arch" type="xml">
 
-            <xpath expr="." position="inside">
+            <!-- <xpath expr="." position="inside">
                 <header>
                     <button name="compute_customer_classifier" type="object" string="Dummy"/>
                 </header>
-            </xpath>
+            </xpath> -->
 
             <xpath expr="//sheet//div[@name='button_box']" position="attributes">
                 <attribute name="groups">awd_price_validator.group_aluwindoor_admin</attribute>

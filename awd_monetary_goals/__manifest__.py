@@ -3,7 +3,7 @@
     'version': '15.0.1',
     'summary': 'Asiganción de metas monetarias por sucursales',
     'description': '''
-        Asigan meta monetaria por equipo de ventas
+        Asigan meta monetaria por equipo de ventas y asigna las comiciones de los vendedores y el equipo operativo
     ''',
     'category': 'Sales',
     'author': "Qualsys Consulting",
@@ -16,11 +16,9 @@
     ],
     'data': [
         'security/ir.model.access.csv',
+        'wizards/wizard_crm_team_get_goals.xml',
         'views/crm_team_inherit_views.xml',
-        'views/settings.xml',
-        'views/hr_employee_inherit_views.xml',
-        'data/ir_cron.xml',
-
+        'views/settings.xml'
     ],
     'installable': True,
     'application': True,

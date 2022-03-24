@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="res_config_settings_view_form_sale_goals" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.sale.goals</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="sale.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]//div[hasclass('app_settings_block')]//div[@name='quotation_order_setting_container']" position="after">
+                <h2>Cálculo de Metas</h2>
+                <div class="row mt16 o_settings_container">
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_right_pane">
+                            <div class="o_form_label">
+                                Seleccionar la fecha de inicio para el cálculo automático de metas
+                                <field name="awd_sales_goals_date_init"/>
+                            </div>
+                            <div class="text-muted">
+                                Fecha de inicio de calculo de ventas, toma el primer y último día de cada mes
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 o_setting_box">
+                        <div class="o_setting_left_pane"></div>
+                        <div class="o_setting_right_pane">
+                            <div class="text-muted">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 o_setting_box">
+                        <div class="o_setting_left_pane"></div>
+                        <div class="o_setting_right_pane">
+                            <label for="awd_goal_price1" />
+                            <div class="text-muted">
+                                Comición para lista de precio 1
+                            </div>
+                            <field name="awd_goal_price1" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 o_setting_box">
+                        <div class="o_setting_left_pane"></div>
+                        <div class="o_setting_right_pane">
+                            <label for="awd_goal_price2" />
+                            <div class="text-muted">
+                                Comición para lista de precio 2
+                            </div>
+                            <field name="awd_goal_price2" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 o_setting_box">
+                        <div class="o_setting_left_pane"></div>
+                        <div class="o_setting_right_pane">
+                            <label for="awd_goal_price3" />
+                            <div class="text-muted">
+                                Comición para lista de precio 3
+                            </div>
+                            <field name="awd_goal_price3" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 o_setting_box">
+                        <div class="o_setting_left_pane"></div>
+                        <div class="o_setting_right_pane">
+                            <label for="awd_goal_price4" />
+                            <div class="text-muted">
+                                Comición para lista de precio 4
+                            </div>
+                            <field name="awd_goal_price4" />
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

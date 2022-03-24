@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <odoo>
     <data noupdate="1">
-        <record id="ir_cron_monetary_goals" model="ir.cron">
+        <record id="monetary_goals_ir_cron" model="ir.cron">
             <field name="name">Calculo de metas</field>
             <field name="interval_number">1</field>
             <field name="interval_type">days</field>

@@ -8,8 +8,8 @@
         <field name="arch" type="xml">
             <xpath expr="//page[@name='accounting']//group[@name='accounting_entries']//field[@name='property_account_payable_id']" position="after">
                 <p style="color:gray"><strong>Datos de Facturación</strong></p>
-                <field name="awd_payment_methods" />
-                <field name="awd_usage_invoice" />
+                <field name="awd_payment_methods"  groups="awd_price_validator.group_aluwindoor_admin" />
+                <field name="awd_usage_invoice" groups="awd_price_validator.group_aluwindoor_admin"/>
             </xpath>
         </field>
     </record>

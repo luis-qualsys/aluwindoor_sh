@@ -175,10 +175,10 @@ class ResPartner(models.Model):
         # period = int(ICPSudo.get_param('awd_customer_classifier.awd_partner_freq_compute'))
         # date_init = ICPSudo.get_param('awd_customer_classifier.awd_partner_freq_date_init')
         today = datetime.datetime.today()
-        date_end = today - datetime.timedelta(days=period)
+        date_init = today - datetime.timedelta(days=period)
 
         # print(date_init, today)
-        return today, date_end
+        return date_init, today
         # date_init_aut = None
 
         # dates = []

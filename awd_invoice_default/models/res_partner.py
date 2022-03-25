@@ -7,7 +7,7 @@ class ResPartner(models.Model):
     awd_payment_methods = fields.Many2one('l10n_mx_edi.payment.method', string='Metodo de pago')
     awd_usage_invoice = fields.Selection(
         selection=[
-            ('G01', 'Acquisition of merchandise'),
+            ('G01', 'Adquisición de mercania'),
             ('G02', 'Returns, discounts or bonuses'),
             ('G03', 'Gastos en General'),
             ('I01', 'Construcciones'),

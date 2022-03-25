@@ -17,7 +17,7 @@
 
             <xpath expr="//field[@name='categ_id']" position="attributes">
                 <!-- <attribute name="attrs">{'domain': [('awd_company_id', '=', company_id)]}</attribute> -->
-                <attribute name="domain">{[('awd_company_id', '=', company_id)]}</attribute>
+                <!-- <attribute name="domain">{[('awd_company_id', '=', company_id)]}</attribute> -->
                 <attribute name="attrs">{'invisible': [('company_id', '=', False)]}</attribute>
             </xpath>
             

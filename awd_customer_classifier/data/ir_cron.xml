@@ -3,7 +3,7 @@
     <!-- model.name cron -->
     <record id="res_partner_classifier__cron" forcecreate="True" model="ir.cron">
         <field name="name">AWD - Clasificador de clientes</field>
-        <field name="active" eval="True"/>
+        <field name="active">True</field>
         <field name="interval_number">1</field>
         <field name="interval_type">days</field>
         <field name="model_id" ref="model_res_partner"/>

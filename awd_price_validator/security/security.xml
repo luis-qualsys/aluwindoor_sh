@@ -19,4 +19,16 @@
         <field name="category_id" ref="module_category_price_validator"/>
         <!-- <field name="implied_ids" evals="[(4, ref('group_aludiwn'))]"/> -->
     </record>
+
+    <record id="family_products_company_rule" model="ir.rule">
+        <field name="name">Familia de productos: multi-compania</field>
+        <field name="model_id" ref="model_awd_product_family"/>
+        <field name="domain_force">['|', ('awd_company_id', '=', False), ('awd_company_id', '=', company_id)]</field>
+    </record>
+    
+    <record id="category_products_company_rule" model="ir.rule">
+        <field name="name">Categoria de productos: multi-compania</field>
+        <field name="model_id" ref="model_product_category"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', '=', company_id)]</field>
+    </record>
 </odoo>

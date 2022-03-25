@@ -35,12 +35,31 @@
             </tree>
         </field>
     </record>
+
+    <!-- awd.product.family search view -->
+    <record id="awd_product_family_view_search" model="ir.ui.view">
+        <field name="name">awd.product.family.view.search</field>
+        <field name="model">awd.product.family</field>
+        <field name="arch" type="xml">
+            <search string="Familias de productos">
+                <!-- Add your fields here -->
+                <!-- <field name="awd_company_id"/> -->
+                <!-- <group expand="0" string="Group By">
+                    <filter name="group_awd_company_id" string="Compañia" context="{'group_by':'awd_company_id'}"/>
+                </group> -->
+            </search>
+        </field>
+    </record>
+
     <!-- awd.product.family action window -->
     <record id="awd_product_family_action" model="ir.actions.act_window">
         <field name="name">Familias de productos</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">awd.product.family</field>
         <field name="view_mode">tree,form</field>
+        <!-- <field name="context">{"search_default_group_awd_company_id":1}</field> -->
+        <!-- <field name="search_view_id" ref="awd_product_family_view_search"/> -->
+        <!-- <field name="domain">[('awd_company_id','=',company_id)]</field> -->
         <field name="help" type="html">
             <p class="oe_view_nocontent_create">
                 <!-- Add Text Here -->

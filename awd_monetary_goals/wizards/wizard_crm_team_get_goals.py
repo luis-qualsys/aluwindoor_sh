@@ -5,8 +5,6 @@ class WizardCrmTeamGetGoals(models.TransientModel):
     _name = 'wizard.crm.team.get.goals'
     _description = 'Obtener metas monetarias'
 
-    name = fields.Char(string='Meta')
-
     awd_date_init = fields.Date(string="Fecha de inicio")
     awd_date_end = fields.Date(string="Fecha de termino")
     crm_team_id = fields.Many2one('crm.team', string="Equipo de ventas")
@@ -17,7 +15,6 @@ class WizardCrmTeamGetGoals(models.TransientModel):
         id_ctx = self.env.context.get('active_id', False)
         rec['crm_team_id'] = id_ctx
         return rec
-
 
     def get_goals_teams(self):
         for record in self:

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- model.name inherit form view -->
+    <record id="hr_employee_inherit_view_form" model="ir.ui.view">
+        <field name="name">hr.employee.inherit.view.form</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="awd_monetary_goals.wizard_hr_employee_get_goals" class="btn btn-info" type="action" string="Calcular Meta"/>
+                <button name="get_goals_employee" type="object" string="Cron"/>
+            </xpath>
+
+            <xpath expr="//field[@name='job_id']" position="after">
+                <field name="crm_team_id" />
+                <field name="awd_is_vendor" />
+            </xpath>
+
+            <xpath expr="//page[@name='hr_settings']" position="after">
+                <page string="Metas de empleado" name="hr_goals_hist">
+                    <field name="awd_hist_employee_goals_ids" string="Metas de empleado" widget='one2many'>
+                        <tree>
+                            <field name="name" readonly="1"/>
+                            <field name="awd_employee_goal" readonly="1"/>
+                            <field name="awd_comision" readonly="1"/>
+                            <field name="state" readonly="1"/>
+                            <field name="awd_comicion_list_1" optional="hide" readonly="1"/>
+                            <field name="awd_comicion_list_2" optional="hide" readonly="1"/>
+                            <field name="awd_comicion_list_3" optional="hide" readonly="1"/>
+                            <field name="awd_comicion_list_4" optional="hide" readonly="1"/>
+                            <field name="awd_sale_list_1" optional="hide" readonly="1"/>
+                            <field name="awd_sale_list_2" optional="hide" readonly="1"/>
+                            <field name="awd_sale_list_3" optional="hide" readonly="1"/>
+                            <field name="awd_sale_list_4" optional="hide" readonly="1"/>
+                            <field name="awd_origin_aut" optional="hide" readonly="1"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

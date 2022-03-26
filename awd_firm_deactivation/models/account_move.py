@@ -13,8 +13,8 @@ class AccountMove(models.Model):
     _inherit = "account.move"
 
     awd_firm_flag = fields.Boolean(
-        string='Evitar timbrado', 
-        default=False,
+        string='Control de Pac', 
+        default=True,
         help="Campo utilizado para evitar el timbrado de la factura.")
 
     def l10n_mx_edi_update_sat_status(self):

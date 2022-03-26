@@ -19,6 +19,8 @@
         'wizards/wizard_crm_team_get_goals.xml',
         'views/crm_team_inherit_views.xml',
         'views/settings.xml',
+        'wizards/wizard_hr_employee_get_goals.xml',
+        'views/hr_employee_inherit_views.xml',
         'data/ir_cron.xml',
     ],
     'installable': True,

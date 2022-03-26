@@ -11,7 +11,7 @@ class AccountMove(models.Model):
 	_inherit = "account.move"
 
 	awd_firm_flag = fields.Boolean(
-		string='Evitar timbrado', 
+		string='Control de PAC', 
 		default=False,
 		help="Campo utilizado para evitar el timbrado de la factura.")
 

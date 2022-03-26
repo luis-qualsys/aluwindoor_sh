@@ -25,11 +25,11 @@ class SalesGoalsSettings(models.TransientModel):
     def get_values(self):
         res = super(SalesGoalsSettings, self).get_values()
         ICPSudo = self.env['ir.config_parameter'].sudo()
-        awd_sales_goals_date_init = ICPSudo.get_param('awd_monetary_goal.awd_sales_goals_date_init')
-        awd_goal_price1 = ICPSudo.get_param('awd_monetary_goal.awd_goal_price1')
-        awd_goal_price2 = ICPSudo.get_param('awd_monetary_goal.awd_goal_price2')
-        awd_goal_price3 = ICPSudo.get_param('awd_monetary_goal.awd_goal_price3')
-        awd_goal_price4 = ICPSudo.get_param('awd_monetary_goal.awd_goal_price4')
+        awd_sales_goals_date_init = ICPSudo.get_param('awd_monetary_goals.awd_sales_goals_date_init')
+        awd_goal_price1 = ICPSudo.get_param('awd_monetary_goals.awd_goal_price1')
+        awd_goal_price2 = ICPSudo.get_param('awd_monetary_goals.awd_goal_price2')
+        awd_goal_price3 = ICPSudo.get_param('awd_monetary_goals.awd_goal_price3')
+        awd_goal_price4 = ICPSudo.get_param('awd_monetary_goals.awd_goal_price4')
         res.update(
             awd_sales_goals_date_init = awd_sales_goals_date_init,
             awd_goal_price1 = awd_goal_price1,
@@ -37,5 +37,4 @@ class SalesGoalsSettings(models.TransientModel):
             awd_goal_price3 = awd_goal_price3,
             awd_goal_price4 = awd_goal_price4
         )
-
         return res

@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
-    <!-- wizard.crm.team.get.goals action window -->
-    <record id="wizard_crm_team_get_goals_form" model="ir.ui.view">
-        <field name="name">wizard.crm.team.get.goals.form</field>
-        <field name="model">wizard.crm.team.get.goals</field>
+    <!-- wizard.hr.employee.get.goals action window -->
+    <record id="wizard_hr_employee_get_goals_form" model="ir.ui.view">
+        <field name="name">wizard.hr.employee.get.goals.form</field>
+        <field name="model">wizard.hr.employee.get.goals</field>
         <field name="arch" type="xml">
             <form string="Clasificador de Clientes manual">
                 <sheet>
@@ -15,10 +15,10 @@
                         <field name="awd_date_end" />
                     </group>
                     <group>
-                        <field name="crm_team_id" readonly="1"/>
+                        <field name="hr_employee_id" readonly="1"/>
                     </group>
                     <footer>
-                        <button name="get_goals_teams" string="Calcular" type="object" class="btn-primary" />
+                        <button name="get_goals_employee" string="Calcular" type="object" class="btn-primary" />
                         <button string="Cancel" special="cancel" class="oe_link" />
                     </footer>
                 </sheet>
@@ -27,9 +27,9 @@
     </record>
 
     <!-- wizard.crm.team.get.goals action window -->
-    <record id="wizard_crm_team_get_goals" model="ir.actions.act_window">
-        <field name="name">Obtener la meta monetaria de Equipo</field>
-        <field name="res_model">wizard.crm.team.get.goals</field>
+    <record id="wizard_hr_employee_get_goals" model="ir.actions.act_window">
+        <field name="name">Obtener la meta monetaria de empleado</field>
+        <field name="res_model">wizard.hr.employee.get.goals</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>
     </record>

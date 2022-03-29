@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+awd_stock_partial_validator.access_awd_wizard_stock_move,access_awd_wizard_stock_move,awd_stock_partial_validator.model_awd_wizard_stock_move,base.group_user,1,1,1,1

@@ -1,21 +1,22 @@
 {
-    'name': 'AWD - Revisión de Stock Ventas',
+    'name': 'AWD - Ordenes parciales Validador',
     'version': '15.0.1',
-    'summary': 'Adición de Información de WH en cotizaciones de venta',
+    'summary': 'Genera ordenes parciales dependiendo del stock',
     'description': '''
-        Adicióna de columna de stock en ordenes de venta
+        Crea ordenes parciales dependiendo el stock de producto
     ''',
     'category': 'Sales',
     'author': "Qualsys Consulting",
     'website': "http://www.qualsys.com.mx",
     'license': 'LGPL-3',
     'depends': [
-        'base',
         'stock',
         'sale'
     ],
     'data': [
-        'views/sale_order_inherit_views.xml',
+        'security/ir.model.access.csv',
+        'wizard/awd_wizard_stock_move.xml',
+        # 'views/sale_order_inherit_views.xml',
     ],
     'installable': True,
     'application': True,

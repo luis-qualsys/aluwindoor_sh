@@ -13,9 +13,10 @@
                 </header>
             </xpath> -->
 
-            <xpath expr="//sheet//div[@name='button_box']" position="attributes">
-                <attribute name="groups">awd_price_validator.group_aluwindoor_admin</attribute>
-            </xpath>
+            <!-- <xpath expr="//sheet//div[@name='button_box']" position="attributes"> -->
+                <!-- <attribute name="groups">awd_price_validator.group_aluwindoor_admin</attribute> -->
+                <!-- <attribute name="invisible">[('awd_box_show', '=', True)]</attribute> -->
+            <!-- </xpath> -->
 
             <xpath expr="//sheet//div[@name='button_box']" position="after">
                 <field name="awd_category" widget="priority" readonly="1" />

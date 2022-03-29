@@ -41,7 +41,8 @@ class HrEmployee(models.Model):
                             ('user_id', '=', employee.user_id.id),
                             ('date_order', '>=', date_initial),
                             ('date_order', '<=', date_ended),
-                            ('state', '=', "sale")
+                            ('state', '=', "sale"),
+                            ('partner_id.awd_compute_monetary', '=', True)
                             ])
 
                         for order in orders:

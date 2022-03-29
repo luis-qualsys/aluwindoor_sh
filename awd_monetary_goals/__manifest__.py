@@ -21,6 +21,7 @@
         'views/settings.xml',
         'wizards/wizard_hr_employee_get_goals.xml',
         'views/hr_employee_inherit_views.xml',
+        'views/res_partner_inherit_views.xml',
         'data/ir_cron.xml',
     ],
     'installable': True,

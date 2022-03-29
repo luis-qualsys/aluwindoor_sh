@@ -57,7 +57,8 @@ class CrmTeam(models.Model):
         date_initial = date(int(date_init[0]), int(date_init[1]), 1)
         goals = self.env['awd.crm.team.goals'].search([
                                 ('sale_team_id', '=', team.id),
-                                ('awd_origin_aut', '=', True)
+                                ('awd_origin_aut', '=', True),
+                                ('partner_id.awd_compute_monetary', '=', True)
                             ])
         if len(goals) > 0:
             dates = []

@@ -16,20 +16,23 @@ class ProductTemplate(models.Model):
     awd_product_family_id = fields.Many2one('awd.product.family',
                                         string='Familia de producto')
 
-
-    @api.constrains('awd_list_price2')
+    @api.constrains('awd_list_price2', 'awd_list_price3')
     def _check_list_price_one(self):
         for record in self:
             if record.list_price:
                 if not (record.list_price > record.awd_list_price2):
                     raise ValidationError(_('La cantidad de la lista de precio 2 debe ser menor a la lista de precio 1'))
+                elif record.awd_list_price2 < record.awd_list_price3:
+                    raise ValidationError(_('La cantidad de la lista de precio 2 debe ser mayor a la lista de precio 3'))
 
-    @api.constrains('awd_list_price3')
+    @api.constrains('awd_list_price3', 'awd_list_price4')
     def _check_list_price_two(self):
         for record in self:
             if record.list_price:
                 if not (record.awd_list_price2 > record.awd_list_price3):
                     raise ValidationError(_('La cantidad de la lista de precio 3 debe ser menor a la lista de precio 2'))
+                elif record.awd_list_price3 < record.awd_list_price4:
+                    raise ValidationError(_('La cantidad de la lista de precio 3 debe ser mayor a la lista de precio 4'))
 
     @api.constrains('awd_list_price4')
     def _check_list_price_three(self):

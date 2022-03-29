@@ -1,4 +1,5 @@
 import datetime
+from email.policy import default
 
 from odoo import models, fields, api
 
@@ -18,6 +19,22 @@ class ResPartner(models.Model):
                                         ('2', 'Plata'),
                                         ('3', 'Oro')
                                     ], default="0", compute='_get_category_view', store=True)
+    awd_box_show = fields.Boolean(string='Box', default=False)
+
+    def read(self, fields=None, load='_classic_read'):
+        for record in self:
+            print('###########', self.env.uid)
+            if self.env.uid == 2:
+                print('########### ADMIN')
+                record.awd_box_show = True
+            elif record.user_id.id == self.env.uid:
+                print('########### USER')
+                record.awd_box_show = True
+            else:
+                print('########### Other')
+                record.awd_box_show = False
+        res = super(ResPartner,self).read(fields,load)
+        return res
 
     @api.onchange('awd_category_view')
     def _get_category_view(self):

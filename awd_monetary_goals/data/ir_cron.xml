@@ -9,8 +9,21 @@
             <field name="model_id" ref="sale.model_crm_team" />
             <field name="state">code</field>
             <field name="code">
-#Calcula las metas monetarias automaticamente y las comisiones de empleados en base a ello
+#Calcula las metas monetarias automaticamente de equipo de ventas
 model.get_goal_team()
+            </field>
+        </record>
+
+        <record id="monetary_goals_employee_ir_cron" model="ir.cron">
+            <field name="name">AWD - Calculo de metas (Empleados)</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="active">True</field>
+            <field name="model_id" ref="hr.model_hr_employee" />
+            <field name="state">code</field>
+            <field name="code">
+#Calcula las comisiones de empleados
+model.get_goals_employee()
             </field>
         </record>
     </data>

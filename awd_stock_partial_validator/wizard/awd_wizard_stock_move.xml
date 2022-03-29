@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="awd_wizard_stock_move_action" model="ir.actions.act_window">
+        <field name="name">Validacion de orden de entrega</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">awd.wizard.stock.move</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+    <record id="awd_wizard_stock_move_view_form" model="ir.ui.view">
+        <field name="name">awd.wizard.stock.move</field>
+        <field name="model">awd.wizard.stock.move</field>
+        <field name="arch" type="xml">
+            <form string="VALIDACIONES">
+                <sheet>
+                    <p>LO SENTIMOS, NO HAY SUFICIENTES PRODUCTOS DISPONIBLES EN EL ALMACEN SELECCIONADO, ¿QUIERES HACER ORDENES DE ENTREGA PARCIALES DESDE LOS OTROS ALMACENES?</p>
+                    <footer>
+                        <button name="calculate" class="btn btn-primary" string="Aceptar" type="object"/>
+                        <button string="Cancelar" special="cancel" class="oe_link"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

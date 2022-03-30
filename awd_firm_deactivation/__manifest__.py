@@ -12,7 +12,7 @@
     'website': "http://www.qualsys.com.mx",
     'license': 'LGPL-3',
     'depends': [
-    	'base',
+        'base',
         'account',
         'account_accountant',
         'account_edi',

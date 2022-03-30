@@ -15,7 +15,9 @@
         'sale'
     ],
     'data': [
+        'security/ir.model.access.csv',
         'views/sale_order_inherit_views.xml',
+        'wizards/wizard_stock_picking_generator_views.xml',
     ],
     'installable': True,
     'application': True,

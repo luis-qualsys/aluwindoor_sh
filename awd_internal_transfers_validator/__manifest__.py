@@ -13,6 +13,7 @@
     'website': "http://www.qualsys.com.mx",
     'license': 'LGPL-3',
     'depends': [
+        'base',
         'stock',
         'sale'
     ],

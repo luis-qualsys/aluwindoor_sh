@@ -21,11 +21,13 @@ odoo.define('fer_stock_compute_sourcing.fer_hide_edit_button.js', function (requ
                 // const user = dataModel[dataModel['res.partner_1'].data.user_id]
                 // console.log('USER', user.res_id)
                 if (login_user !== user_final){
+                    boxButton = this.$("div").find('.oe_button_box')
+                    boxButton.hide()
                     console.log('Hide button')
-                    $("div").find('.oe_button_box').hide()
                 } else {
+                    boxButton = this.$("div").find('.oe_button_box')
+                    boxButton.show()
                     console.log('Show button')
-                    $("div").find('.oe_button_box').show()
                 }
             }
         },

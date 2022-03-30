@@ -9,6 +9,7 @@ from odoo.tools.float_utils import float_compare
 
 class StockTransform(models.Model):
     _name = 'stock.transform'
+    _description = 'Transformador de productos'
 
     # awd_sucursal = fields.Many2one("crm.team",string="Sucursal")
     name = fields.Char(string='Nombre',readonly=True,required=True,copy=False,default="New")

@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- sale.order inherit form view -->
     <record id="sale_order" model="ir.ui.view">
         <field name="name">sale.order.inherit.view.form</field>
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form" />
         <field name="arch" type="xml">
-            <!-- Add your xpath here -->
             <xpath expr="//page[@name='order_lines']//tree//field[@name='tax_id']" position="before">
-                <!-- Add your fields here -->
-                    <field name="awd_stocks" />
-                    <field name="awd_stocks1" />
+                <field name="awd_stocks" />
+                <field name="awd_stocks1" />
             </xpath>
         </field>
     </record>

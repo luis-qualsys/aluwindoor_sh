@@ -9,7 +9,7 @@ class SaleOrder(models.Model):
     def action_confirm(self):
         for record in self:
             prices = []
-            print('Clasificación', record.awd_partner_cat)
+            # print('Clasificación', record.awd_partner_cat)
             for line in record.order_line:
                 prices.append(int(line.awd_price_selector))
             if prices != []:
@@ -20,16 +20,24 @@ class SaleOrder(models.Model):
                         record.state = 'to_approve'
                         return {'type': 'ir.actions.client', 'tag': 'reload'}
                     else:
-                        res = super(SaleOrder, self).action_confirm()
-                        return res
+                        if len(record.picking_ids) > 0:
+                            record.state = 'sale'
+                            return {'type': 'ir.actions.client', 'tag': 'reload'}
+                        else:
+                            res = super(SaleOrder, self).action_confirm()
+                            return res
                 else:
                     if 4 in prices:
                         print(record.state)
                         record.state = 'to_approve'
                         return {'type': 'ir.actions.client', 'tag': 'reload'}
                     else:
-                        res = super(SaleOrder, self).action_confirm()
-                        return res
+                        if len(record.picking_ids) > 0:
+                            record.state = 'sale'
+                            return {'type': 'ir.actions.client', 'tag': 'reload'}
+                        else:
+                            res = super(SaleOrder, self).action_confirm()
+                            return res
             else:
                 raise UserError(_('No se pueden aprobar productos sin lista de precio configurada.'))
 

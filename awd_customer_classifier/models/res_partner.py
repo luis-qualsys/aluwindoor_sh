@@ -12,26 +12,27 @@ class ResPartner(models.Model):
                                         ('1', 'Bronce'),
                                         ('2', 'Plata'),
                                         ('3', 'Oro')
-                                    ], default="0", compute='_get_categories')
+                                    ], compute='_get_categories')
     awd_category = fields.Selection(string='Categoria', selection=[
                                         ('0', 'Ninguno'),
                                         ('1', 'Bronce'),
                                         ('2', 'Plata'),
                                         ('3', 'Oro')
-                                    ], default="0", compute='_get_category_view', store=True)
-    awd_box_show = fields.Boolean(string='Box', default=False)
+                                    ], compute='_get_category_view', store=True)
+    awd_box_show = fields.Boolean(string='Box', default=False, store=True)
 
     def read(self, fields=None, load='_classic_read'):
         for record in self:
-            print('###########', self.env.uid)
+            if record.awd_category_view:
+                record.awd_category = record.awd_category_view
+            else:
+                record.awd_category = '0'
+
             if self.env.uid == 2:
-                print('########### ADMIN')
                 record.awd_box_show = True
             elif record.user_id.id == self.env.uid:
-                print('########### USER')
                 record.awd_box_show = True
             else:
-                print('########### Other')
                 record.awd_box_show = False
         res = super(ResPartner,self).read(fields,load)
         return res
@@ -50,7 +51,9 @@ class ResPartner(models.Model):
             result = self.env['awd.res.partner.result'].search([('partner_id.id', '=', record.id)])
             if len(result) > 0:
                 result = result[-1]
-                if result.awd_category_view:
+                # print('######## RESULT', result)
+                # print('######## RESULT', result.awd_category)
+                if result.awd_category:
                     record.awd_category_view = result.awd_category
                 else:
                     record.awd_category_view = '0'
@@ -81,7 +84,7 @@ class ResPartner(models.Model):
                         })
                     data_one = user._get_fam_qty_cost(data, rest_id)
                     data_two = user._get_fam_so_qty_cost(data, rest_id)
-                    print('Clasificador calculado', user.name)
+                    # print('Clasificador calculado', user.name)
                 else:
                     data = user._compute_get_families(date_init, date_end)
                     rest_id = self.env['awd.res.partner.result'].create({
@@ -92,7 +95,7 @@ class ResPartner(models.Model):
                         })
                     data_one = user._get_fam_qty_cost(data, rest_id)
                     data_two = user._get_fam_so_qty_cost(data, rest_id)
-                    print('Clasificador calculado', user.name)
+                    # print('Clasificador calculado', user.name)
             else:
                 if len(user.sale_order_ids):
                     data = user._compute_get_families(date_init, date_end)
@@ -104,7 +107,7 @@ class ResPartner(models.Model):
                         })
                     data_one = user._get_fam_qty_cost(data, rest_id)
                     data_two = user._get_fam_so_qty_cost(data, rest_id)
-                    print('Clasificador calculado', user.name)
+                    # print('Clasificador calculado', user.name)
                 else:
                     data = user._compute_get_families(date_init, date_end)
                     rest_id = self.env['awd.res.partner.result'].create({
@@ -115,7 +118,7 @@ class ResPartner(models.Model):
                         })
                     data_one = user._get_fam_qty_cost(data, rest_id)
                     data_two = user._get_fam_so_qty_cost(data, rest_id)
-                    print('Clasificador calculado', user.name)
+                    # print('Clasificador calculado', user.name)
         return True
 
 

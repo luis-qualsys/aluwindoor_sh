@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="wizard_stock_picking_generator_form" model="ir.ui.view">
+        <field name="name">Generar ordenes parciales</field>
+        <field name="model">wizard.stock.picking.generator</field>
+        <field name="arch" type="xml">
+            <form string="VALIDACIONES">
+                <sheet>
+                    <p>No hay suficientes productos disponibles en el almacen seleccionado</p> 
+                    <p>Se generara una orden de entrega parcial desde otro almacen con disponibilidad</p>
+                    <group>
+                        <field name="awd_sale_id" readonly="1"/>
+                    </group>
+
+                    <footer>
+                        <button name="compute_picking_generator" class="btn btn-primary" string="Aceptar" type="object"/>
+                        <button string="Cancelar" special="cancel" class="oe_link"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="wizard_stock_picking_generator_action" model="ir.actions.act_window">
+        <field name="name">Validacion de orden de entrega</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">wizard.stock.picking.generator</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

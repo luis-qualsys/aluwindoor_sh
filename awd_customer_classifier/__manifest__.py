@@ -33,10 +33,10 @@
         'views/stock_valuation_layer_inherit_views.xml',
         'views/purchase_order_inherit_views.xml',
     ],
-    "assets": {
-        "web.assets_backend": [
-            "/awd_customer_classifier/static/src/js/awd_hide_button_box.js"
-        ]},
+    # "assets": {
+    #     "web.assets_backend": [
+    #         "/awd_customer_classifier/static/src/js/awd_hide_button_box.js"
+    #     ]},
     'installable': True,
     'application': True,
 }

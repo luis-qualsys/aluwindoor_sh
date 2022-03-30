@@ -73,16 +73,17 @@ class AwdResPartnerResults(models.Model):
 
     @api.depends('awd_calculate_results_id', 'awd_calculate_so_results_id')
     def _get_category_client(self):
-        datas = self._compute_stats()
-        print("######### DATAS", datas)
-        if datas == 1:
-            self.awd_category = '1'
-        if datas == 2:
-            self.awd_category = '2'
-        if datas == 3:
-            self.awd_category = '3'
-        if datas == 0:
-            self.awd_category = '0'
+        for record in self:
+            datas = record._compute_stats()
+            # print("######### DATAS", datas)
+            if datas == 1:
+                record.awd_category = '1'
+            if datas == 2:
+                record.awd_category = '2'
+            if datas == 3:
+                record.awd_category = '3'
+            if datas == 0:
+                record.awd_category = '0'
 
 
     def _compute_stats(self):
@@ -100,20 +101,20 @@ class AwdResPartnerResults(models.Model):
             if n_fam >= awd_families:
                 fams_fin = True
             
-            print("#### Fam_fin", fams_fin)
+            # print("#### Fam_fin", fams_fin)
             # Frecuencia de ventas
             freq_fin = record.awd_freq_sales * 100
             freq = False
             if freq_fin >= awd_freq:
                 freq = True
 
-            print("#### Freq", freq)
+            # print("#### Freq", freq)
             # Cantidad vendida
             prices = False
             if record.awd_sold_sales >= awd_sales:
                 prices = True
 
-            print('## prices', prices)
+            # print('## Prices', prices)
             datas = [fams_fin, freq, prices]
 
             return datas.count(True)

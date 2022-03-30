@@ -6,28 +6,10 @@
         <field name="model">stock.picking</field>
         <field name="inherit_id" ref="stock.view_picking_form"/>
         <field name="arch" type="xml">
-            <!-- Add your xpath here -->
-            
             <xpath expr="//header" position="inside">
-            
                 <button name="action_approval_stock" class="btn-primary" string="Aprobar" groups="awd_Internal_transfers_validator.group_aluwindoor" type="object" attrs="{'invisible': [('state', 'not in', ['to_approve'])]}"/>
-                <button name="action_no_approval_stock"  string="No aprobar" groups="awd_Internal_transfers_validator.group_aluwindoor" type="object" attrs="{'invisible': [('state', 'not in', ['to_approve'])]}"/>
+                <button name="action_no_approval_stock" string="No aprobar" groups="awd_Internal_transfers_validator.group_aluwindoor" type="object" attrs="{'invisible': [('state', 'not in', ['to_approve'])]}"/>
             </xpath>
-    
-            </field>
-    </record>
-    </odoo>
-    <!-- sale.order inherit tree view -->
-    <!-- <record id="stock_order_inherit_view_tree" model="ir.ui.view">
-        <field name="name">stock.picking.inherit.view.tree</field>
-        <field name="model">stock.picking</field>
-        <field name="inherit_id" ref="stock.view_quotation_tree_with_onboarding"/>
-        <field name="arch" type="xml">
-            
-            <xpath expr="//tree//field[@name='state']" position="attributes">
-                    <attribute name="decoration-warning">state == 'to_approve'</attribute>
-            </xpath>
-
         </field>
-    </record> -->
-
+    </record>
+</odoo>

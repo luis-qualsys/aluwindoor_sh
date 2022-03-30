@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+awd_stock_partial.access_wizard_stock_picking_generator,access_wizard_stock_picking_generator,awd_stock_partial.model_wizard_stock_picking_generator,,1,1,1,1

@@ -6,7 +6,7 @@
         <field name="sequence">20</field>
     </record>
 
-    <record id="group_aluwindoor" model="res.groups">
+    <record id="group_aluwindoor_transfers" model="res.groups">
         <field name="name">Validador de transferencias</field>
         <field name="comment">Grupo de permisos para aprobación de transferencias.</field>
         <field name="category_id" ref="module_category_transfers_validator"/>

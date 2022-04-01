@@ -14,12 +14,10 @@
     'license': 'LGPL-3',
     'depends': [
         'base',
-        'stock',
-        'sale'
+        'stock'
     ],
     'data': [
         'security/security.xml',
-        
         'views/stock_picking_inherit_views.xml',
     ],
     'installable': True,
